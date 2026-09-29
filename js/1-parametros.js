@@ -59,8 +59,6 @@ const PARAMETROS = [
   { id: 'infectedDeathAge', group: 'Tempos',  label: 'Infectada morre em',   unit: 'gerações', min: 1, max: 200, step: 1,   value: 8 },
   { id: 'maturationAge',    group: 'Tempos',  label: 'Morta amadurece em',   unit: 'gerações', min: 1, max: 200, step: 1,   value: 5 },
   { id: 'sporeDuration',    group: 'Tempos',  label: 'Esporos duram',        unit: 'gerações', min: 1, max: 200, step: 1,   value: 20 },
-  // Nascimentos: saudáveis novas que surgem em posições vazias sorteadas.
-  { id: 'birthsPerGeneration', group: 'População', label: 'Nascimentos',     unit: 'por geração', min: 0, max: 100, step: 1, value: 2 },
 ];
 
 /** Objeto { id: valorPadrão } montado a partir da lista acima. */

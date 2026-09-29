@@ -16,7 +16,7 @@ function canEdit() {
 
 /**
  * Cria um campo para cada item de PARAMETROS (1-parametros.js), separados
- * pelos grupos (Chances, Tempos, População). Cada campo tem id "param-<id>".
+ * pelos grupos (Chances, Tempos). Cada campo tem id "param-<id>".
  */
 function buildParamFields() {
   const groups = [...new Set(PARAMETROS.map(p => p.group))];

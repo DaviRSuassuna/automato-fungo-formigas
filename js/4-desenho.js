@@ -165,8 +165,7 @@ function renderTotals(t) {
     `<p>Infecções acumuladas <b>${sim.infections}</b></p>`,
     `<p>Mortes acumuladas <b>${sim.deaths}</b></p>`,
     `<p>Mortas que viraram produtoras <b>${sim.matured}</b></p>`,
-    `<p>Nascimentos acumulados <b>${sim.births}</b></p>`,
-    `<p>Última geração <b>${sim.lastDeaths} mortes · ${sim.lastBirths} nascimentos</b></p>`,
+    `<p>Mortes na última geração <b>${sim.lastDeaths}</b></p>`,
     '</div>',
   ].join('');
 }

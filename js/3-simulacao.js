@@ -5,12 +5,11 @@
  * ----------------------------------------------------------------------------
  * Não lê nem escreve nada na tela. Toda a interface consulta este objeto.
  *
- * Cada chamada de step() avança UMA geração em três etapas:
+ * Cada chamada de step() avança UMA geração em duas etapas:
  *   1) biologicalPhase — contágio, envelhecimento, mortes, maturação,
  *      produção de esporos e remoção de cadáveres;
- *   2) transportPhase  — deslocamento de vivas para uma célula vizinha;
- *   3) birthPhase      — novas saudáveis em posições vazias sorteadas.
- * As etapas 1 e 2 leem a grade "antiga" e escrevem numa grade nova, de modo
+ *   2) transportPhase  — deslocamento de vivas para uma célula vizinha.
+ * As duas etapas leem a grade "antiga" e escrevem numa grade nova, de modo
  * que a ordem de varredura das células não altera as regras (atualização simultânea).
  *
  * Os valores editáveis ficam em this.params (ver 1-parametros.js).
@@ -66,9 +65,7 @@ class Simulation {
     this.infections = 0;  // infecções acumuladas
     this.matured = 0;     // mortas que viraram produtoras
     this.removed = 0;     // cadáveres removidos
-    this.births = 0;      // nascimentos acumulados
     this.lastDeaths = 0;
-    this.lastBirths = 0;
 
     if (this.initialCells) {
       this.cells = cloneCells(this.initialCells);
@@ -176,36 +173,13 @@ class Simulation {
 
   /* -------------------------- Uma geração -------------------------- */
 
-  /** Avança uma geração: etapa biológica, transporte e nascimentos. */
+  /** Avança uma geração: etapa biológica e transporte. */
   step() {
     const deathsBefore = this.deaths;
-    const birthsBefore = this.births;
     const afterBiology = this.biologicalPhase(this.cells);
     this.cells = this.transportPhase(afterBiology);
-    this.birthPhase();
     this.generation++;
     this.lastDeaths = this.deaths - deathsBefore;
-    this.lastBirths = this.births - birthsBefore;
-  }
-
-  /**
-   * ETAPA 3 — Nascimentos. Surgem até birthsPerGeneration saudáveis novas,
-   * cada uma numa posição VAZIA sorteada da grade. Se houver menos posições
-   * vazias que o valor pedido, nascem só as que cabem.
-   */
-  birthPhase() {
-    const wanted = this.params.birthsPerGeneration;
-    if (wanted <= 0) return;
-
-    const empty = [];
-    for (let k = 0; k < CELL_COUNT; k++) {
-      if (occupancy(this.cells[k]) === 0) empty.push(k);
-    }
-    this.shuffle(empty);
-    for (const k of empty.slice(0, wanted)) {
-      this.cells[k].healthy = 1;
-      this.births++;
-    }
   }
 
   /**
