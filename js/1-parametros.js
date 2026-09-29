@@ -53,10 +53,10 @@ const SCENARIO = {
  */
 const PARAMETROS = [
   // Chance de infecção: por geração, para cada saudável com produtora vizinha.
-  { id: 'infectionChance',  group: 'Chances', label: 'Infecção',             unit: '%',        min: 0, max: 100, step: 0.1, value: 12 },
-  { id: 'moveChance',       group: 'Chances', label: 'Movimento',            unit: '%',        min: 0, max: 100, step: 0.1, value: 65 },
-  { id: 'producerChance',   group: 'Chances', label: 'Morta vira produtora', unit: '%',        min: 0, max: 100, step: 0.1, value: 100 },
-  { id: 'infectedDeathAge', group: 'Tempos',  label: 'Infectada morre em',   unit: 'gerações', min: 1, max: 200, step: 1,   value: 8 },
+  { id: 'infectionChance',  group: 'Chances', label: 'Infecção',             unit: '%',        min: 0, max: 100, step: 0.1, value: 10 },
+  { id: 'moveChance',       group: 'Chances', label: 'Movimento',            unit: '%',        min: 0, max: 100, step: 0.1, value: 0 },
+  { id: 'producerChance',   group: 'Chances', label: 'Morta vira produtora', unit: '%',        min: 0, max: 100, step: 0.1, value: 50 },
+  { id: 'infectedDeathAge', group: 'Tempos',  label: 'Infectada morre em',   unit: 'gerações', min: 1, max: 200, step: 1,   value: 10 },
   { id: 'maturationAge',    group: 'Tempos',  label: 'Morta amadurece em',   unit: 'gerações', min: 1, max: 200, step: 1,   value: 5 },
   { id: 'sporeDuration',    group: 'Tempos',  label: 'Esporos duram',        unit: 'gerações', min: 1, max: 200, step: 1,   value: 20 },
 ];
